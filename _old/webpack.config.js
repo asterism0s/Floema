@@ -53,7 +53,7 @@ module.exports = {
                          plugins: [
                               ["gifsicle", { interlaced: true }],
                               ["jpegtran", { progressive: true }],
-                              ["optipng", { optimizationLevel: 5 }],
+                              ["optipng", { optimizationLevel: 8 }],
                          ],
                     },
                },
@@ -103,19 +103,6 @@ module.exports = {
                     use: [
                          {
                               loader: ImageMinimizerPlugin.loader,
-                              options: {
-                                   minimizer: {
-                                        implementation: ImageMinimizerPlugin.imageminMinify,
-                                        options: {
-                                             plugins: [
-                                                  "imagemin-gifsicle",
-                                                  "imagemin-mozjpeg",
-                                                  "imagemin-pngquant",
-                                                  "imagemin-svgo",
-                                             ],
-                                        },
-                                   },
-                              },
                          },
                     ],
                },
