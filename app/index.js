@@ -1,3 +1,3 @@
-import placeholder from 'images/placeholder.png';
+import placeholder from 'images/placeholder.png'
 
-console.log(placeholder); 
+console.log(placeholder)
