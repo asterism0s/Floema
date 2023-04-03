@@ -9,8 +9,8 @@ const Prismic = require('@prismicio/client')
 const PrismicDOM = require('prismic-dom')
 
 const initApi = req => {
-  return Prismic.getAPI(process.env.PRISMIC_ENDPOINT, {
-    acessToken: process.env.PRISMIC_ACESS_TOKEN,
+  return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
+    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
     req
   })
 }
@@ -21,7 +21,7 @@ const handleLinkResolver = doc => {
   // } else if (doc.type === 'blog_post') {
   //   return '/blog/' + doc.uid
   // }
-  // return '/'
+  return '/'
 }
 
 app.use((req, res, next) => {
@@ -36,21 +36,44 @@ app.use((req, res, next) => {
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
-app.get('/', (req, res) => {
-  res.render('pages/home')
+app.get('/home', (req, res) => {
+  initApi(req).then(api => {
+    api.query(
+      Prismic.Predicates.any('document.type', ['meta', 'home'])).then(response => {
+      const { results } = response
+      const [home, meta] = results
+
+      console.log(home, meta)
+
+      res.render('pages/home', {
+        meta,
+        home
+      })
+    })
+  })
 })
 
 app.get('/about', (req, res) => {
   initApi(req).then(api => {
     api.query(
-      Prismic.Predicates.at('document.type', 'homepage')
-    ).then(response => {
+      Prismic.Predicates.any('document.type', ['meta', 'about'])).then(response => {
+      const { results } = response
+      const [about, meta] = results
+
+      console.log(about.data.body)
+
+      about.data.gallery.forEach(media => {
+        console.log(media)
+      })
+
+      console.log(about, meta)
+
       res.render('pages/about', {
-        document: response.results[0]
+        meta,
+        about
       })
     })
   })
-  res.render('pages/about')
 })
 
 app.get('/collections', (req, res) => {
