@@ -43,8 +43,6 @@ app.get('/home', (req, res) => {
       const { results } = response
       const [home, meta] = results
 
-      console.log(home, meta)
-
       res.render('pages/home', {
         meta,
         home
@@ -54,24 +52,13 @@ app.get('/home', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-  initApi(req).then(api => {
-    api.query(
-      Prismic.Predicates.any('document.type', ['meta', 'about'])).then(response => {
-      const { results } = response
-      const [about, meta] = results
+  initApi(req).then(async api => {
+    const meta = await api.getSingle('meta')
+    const about = await api.getSingle('about')
 
-      console.log(about.data.body)
-
-      about.data.gallery.forEach(media => {
-        console.log(media)
-      })
-
-      console.log(about, meta)
-
-      res.render('pages/about', {
-        meta,
-        about
-      })
+    res.render('pages/about', {
+      meta,
+      about
     })
   })
 })
@@ -81,7 +68,13 @@ app.get('/collections', (req, res) => {
 })
 
 app.get('/detail/:uid', (req, res) => {
-  res.render('pages/detail')
+  initApi(req).then(async api => {
+    const meta = await api.getSingle('meta')
+
+    res.render('pages/detail', {
+      meta
+    })
+  })
 })
 
 app.listen(port, () => {
