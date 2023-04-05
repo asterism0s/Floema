@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
+
 const app = express()
 const path = require('path')
 const port = 3000
@@ -51,23 +52,24 @@ app.get('/home', (req, res) => {
   })
 })
 
-app.get('/about', (req, res) => {
-  initApi(req).then(async api => {
-    const meta = await api.getSingle('meta')
-    const about = await api.getSingle('about')
+app.get('/about', async (req, res) => {
+  const api = await initApi(req)
+  const meta = await api.getSingle('meta')
+  const about = await api.getSingle('about')
 
-    res.render('pages/about', {
-      meta,
-      about
-    })
+  res.render('pages/about', {
+    about,
+    meta
   })
 })
 
-app.get('/collections', (req, res) => {
-  res.render('pages/collections')
+app.get('/collection', (req, res) => {
+  res.render('pages/collection')
 })
 
-app.get('/detail/:uid', (req, res) => {
+app.get('/detail/:uid', async (req, res) => {
+  console.log('REQUEST')
+
   initApi(req).then(async api => {
     const meta = await api.getSingle('meta')
 
