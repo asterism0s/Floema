@@ -26,11 +26,19 @@ const handleLinkResolver = doc => {
 }
 
 app.use((req, res, next) => {
-  res.locals.ctx = {
-    endpoint: process.env.PRISMIC_ENDPOINT,
-    linkResolver: handleLinkResolver
+  // res.locals.ctx = {
+  //   endpoint: process.env.PRISMIC_ENDPOINT,
+  //   linkResolver: handleLinkResolver
+  // }
+
+  res.locals.Links = handleLinkResolver
+
+  res.locals.Numbers = index => {
+    return index === 0 ? 'One' : index === 1 ? 'Two' : index === 2 ? 'Three' : index === 3 ? 'Four' : ''
   }
+
   res.locals.PrismicDOM = PrismicDOM
+
   next()
 })
 
@@ -66,19 +74,15 @@ app.get('/about', async (req, res) => {
 app.get('/collections', async (req, res) => {
   const api = await initApi(req)
   const meta = await api.getSingle('meta')
+  const home = await api.getSingle('home')
   const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collection'), {
     fetchLinks: 'product.image'
   })
 
-  // console.log(collections)
-
-  // collections.forEach(collection => {
-  //   console.log(collection.data.products[0].products_product)
-  // })
-
   res.render('pages/collections', {
-    meta,
-    collections
+    collections,
+    home,
+    meta
   })
 })
 
