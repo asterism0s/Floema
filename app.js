@@ -44,10 +44,6 @@ app.use(logger('dev'))
 app.use(methodOverride())
 
 app.use((req, res, next) => {
-  // res.locals.ctx = {
-  //   endpoint: process.env.PRISMIC_ENDPOINT,
-  //   linkResolver: handleLinkResolver
-  // }
   res.locals.Link = handleLinkResolver
 
   res.locals.Numbers = index => {
@@ -84,8 +80,6 @@ app.get('/', async (req, res) => {
   const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collection'), {
     fetchLinks: 'product.image'
   })
-
-  console.log(defaults.navigation)
 
   res.render('pages/home', {
     ...defaults,
