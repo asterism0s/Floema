@@ -92,13 +92,13 @@ module.exports = {
 
       {
         test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
-        loader: 'file-loader'
-        // options: {
-        //   outputPath: 'assets',
-        //   name (file) {
-        //     return '[name].[ext]'
-        //   }
-        // }
+        loader: 'file-loader',
+        options: {
+          outputPath: 'assets',
+          name (file) {
+            return '[name].[ext]'
+          }
+        }
       },
       {
         test: /\.(jpe?g|png|gif|svg|webp)$/i,
