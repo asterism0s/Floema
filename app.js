@@ -37,12 +37,13 @@ const handleLinkResolver = doc => {
   console.log(doc)
   return '/'
 }
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(errorHandler())
 app.use(logger('dev'))
 app.use(methodOverride())
-
+app.use(express.static(path.join(__dirname, 'public')))
 app.use((req, res, next) => {
   res.locals.Link = handleLinkResolver
 
