@@ -5,9 +5,11 @@
 @import './utils/mixins';
 @import './utils/vendors';
 
+@import './shared/titles';
+@import './shared/descriptions.scss';
+
 @import './base/fonts';
 @import './base/base';
-
 
 @import './pages/about/about';
 @import './pages/about/content';
