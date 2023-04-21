@@ -4,9 +4,10 @@
 @import './utils/functions';
 @import './utils/mixins';
 @import './utils/vendors';
+@import './utils/responsive';
 
 @import './shared/titles';
-@import './shared/descriptions.scss';
+@import './shared/descriptions';
 
 @import './base/fonts';
 @import './base/base';
