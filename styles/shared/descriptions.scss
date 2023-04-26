@@ -1,13 +1,19 @@
-%description-12 {
-    font-size: 1.2rem;
+%description {
+
+    &-12 {
+        font-size: 1.2rem;
+    }
+    
+    &-14 {
+        font-size: 1.4rem;
+    }
+
+    &-16 {
+        font-size: 1.6rem;
+        font-weight: 300;
+        letter-spacing: 0.03rem;
+        line-height: 1.5;
+    }
 }
 
-%description-14 {
-    font-size: 1.4rem;
-}
-
-%description-16 {
-    font-size: 1.6rem;
-    font-weight: 300;
-}
 
