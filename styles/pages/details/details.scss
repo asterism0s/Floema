@@ -1,6 +1,9 @@
 .detail {
     @extend %cover;
     @extend %center;
+
+    background: $color-quicksand;
+    color: $color-white;
 }
 
 .detail__wrapper {
@@ -20,9 +23,9 @@
     object-fit: cover;
 }
 
-// .detail__information {
-
-// }
+.detail__information {
+    padding-left: 8.2rem;
+}
 
 .detail__information__collection {
     @extend %description-12;
@@ -56,7 +59,7 @@
 }
 
 .detail__information__highlight__icon {
-    border: 1px solid #f0f;
+    border: 1px solid currentColor;
     border-radius: 50px;
     height: 4rem;
     // margin-right: 3.75rem;
