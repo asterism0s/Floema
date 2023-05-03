@@ -34,6 +34,7 @@
     @extend %title-200;
 
     padding-top: 2rem;
+    
 }
 
 .collections__gallery {
@@ -49,31 +50,44 @@
 
 }
 
-// .collections__gallery__link {
-
-// }
-
-// .collections__gallery__media {
-
-// }
-
-.collections__gallery__media__image {
-    width: 200px;
-    height: 200px;
+.collections__gallery__link {
+    display: block;
+    margin: 0 5.3rem;
 }
 
-// .collections__content {
+.collections__gallery__media {
+    height: 63.1rem;
+    position: relative;
+    width: 44.7rem;
+}
 
-// }
+.collections__gallery__media__image {
+    @extend %cover;
 
-// .collections__article {
+    object-fit: cover;
+}
 
-// }
+.collections__content {
+    @extend %cover;
+}
 
-// .collections__article__title {
+.collections__article {
+    bottom: 8rem;
+    left: 8rem;
+    opacity: 0;
+    position: absolute;
 
-// }
+    &--active {
+        opacity: 1;
+    }
+}
 
-// .collections__article__description {
+.collections__article__title {
+    @extend %title-60;
+}
 
-// }
+.collections__article__description {
+    @extend %description-16;
+
+    max-width: 44rem;
+}
