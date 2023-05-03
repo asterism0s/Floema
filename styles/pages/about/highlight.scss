@@ -1,6 +1,16 @@
-// .about__highlight {
+.about__highlight {
+    height: 58.6rem;
+    margin: 20rem 0;
+    position: relative;
 
-// }
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
 
 // .about__highlight__wrapper {
 

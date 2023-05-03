@@ -1,11 +1,16 @@
-// .about {
-
-// }
+.about {
+    background: $color-cadet-gray;
+    color: $color-bright-blue;
+}
 
 // .about__wrapper {
 
 // }
 
-// .about__title {
+.about__title {
+    @extend %title-100;
 
-// }
+    margin: auto;
+    max-width: 124rem;
+    text-align: center;
+}
