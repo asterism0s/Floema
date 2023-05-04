@@ -1,7 +1,7 @@
 .about__content {
-    height: 58.6rem;
-    margin: 20rem 0;
+    margin: 20rem auto;
     position: relative;
+    width: 125.8rem;
 
     &:first-child {
         margin-top: 0;
@@ -12,22 +12,23 @@
     }
 }
 
-// .about__content__wrapper {
+.about__content__wrapper {
+    display: flex;
+}
 
-// }
+.about__content__label {
+    width: 18rem;
+}
 
-// .about__content__label {
+.about__content__description {
+    width: 36.2rem;
+}
 
-// }
+.about__content__media {
+    position: absolute;
+}
 
-// .about__content__description {
-
-// }
-
-// .about__content__media {
-
-// }
-
-// .about__content__media__image {
-
-// }
+.about__content__media__image {
+    width: 53.8rem;
+    height: 89.8rem;
+}
