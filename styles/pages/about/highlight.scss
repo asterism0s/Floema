@@ -1,7 +1,5 @@
 .about__highlight {
-    height: 58.6rem;
     margin: 20rem 0;
-    position: relative;
 
     &:first-child {
         margin-top: 0;
@@ -12,22 +10,63 @@
     }
 }
 
-// .about__highlight__wrapper {
+.about__highlight__wrapper {
+    height: 104rem;
+    margin: auto;
+    position: relative;
+    width: 144rem;
 
-// }
+    .about__highlight:nth-child(4) & {
+        width: 104rem;
+    }
+}
 
-// .about__highlight__label {
+.about__highlight__label {
+    @extend %description-12;
 
-// }
+    left: 50%;
+    letter-spacing: 0.1rem;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 9rem;
+    transform: translateX(-50%);
+    width: 9.6rem;
+}
 
-// .about__highlight__title {
+.about__highlight__title {
+    @extend %title-200;
 
-// }
+    padding-bottom: 2rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
 
-// .about__highlight__media {
+.about__highlight__media {
+    height: 76rem;
+    position: absolute;
+    width: 54rem;
 
-// }
+    .about__highlight:nth-child(4) & {
+        height: 52.8rem;
+        width: 36rem;
+    }
 
-// .about__highlight__media__image {
+    &:first-child {
+        left: 0;
+        top: 0;
+    }
 
-// }
+    &:last-child {
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.about__highlight__media__image {
+    @extend %cover;
+
+    object-fit: cover;
+}

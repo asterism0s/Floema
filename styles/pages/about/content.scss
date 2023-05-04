@@ -29,6 +29,8 @@
 }
 
 .about__content__media__image {
-    width: 53.8rem;
-    height: 89.8rem;
+    height: 50%;
+    width: 50%;
+
+    object-fit: cover;
 }
