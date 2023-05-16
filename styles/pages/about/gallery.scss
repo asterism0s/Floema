@@ -2,6 +2,7 @@
     height: 58.6rem;
     margin: 20rem 0;
     position: relative;
+    overflow-x: hidden;
 
     &:first-child {
         margin-top: 0;
@@ -10,8 +11,6 @@
     &:last-child {
         margin-bottom: 0;
     }
-
-    overflow-x: hidden; //retirar
 }
 
 .about__gallery__wrapper {
