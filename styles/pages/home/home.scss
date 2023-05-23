@@ -6,6 +6,25 @@
     color: $color-spanish-white;
     text-align: center;
 
+    &:before,
+    &:after {
+        content: '';
+        height: 24rem;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+    } 
+
+    &:before {
+        background: linear-gradient(to bottom, $color-contessa 0%, rgba($color-contessa, 0) 100%); //rgba is for safari. it doesnt handle transparent very well.
+        top: 0;
+    }
+
+    &:after {
+        background: linear-gradient(to top, $color-contessa 0%, rgba($color-contessa, 0) 100%);
+        bottom: 0;
+    }
 }
 
 // .home__wrapper {
@@ -40,6 +59,19 @@
 
 // }
 
-// .home__link {
+.home__link {
+    @extend %description-14;
 
-// }
+    align-items: center;
+    bottom: 5rem;
+    display: flex;
+    height: 6rem;
+    left: 50%;
+    letter-spacing: 0.05rem;
+    position: absolute;
+    text-transform: uppercase;
+    justify-content: center;
+    transform: translateX(-50%);
+    width: 28.8rem;
+    z-index: 2;
+}
