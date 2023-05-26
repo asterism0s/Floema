@@ -75,3 +75,9 @@
     width: 28.8rem;
     z-index: 2;
 }
+
+.home__link__icon {
+    @extend %cover;
+
+    
+}
