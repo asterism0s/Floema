@@ -4,17 +4,34 @@
 
     background: $color-quicksand;
     color: $color-spanish-white;
+
+    @include media('<phone') {
+        height: auto;
+    }
 }
 
 .detail__wrapper {
     align-items: center;
     display:flex;
+
+    @include media('<phone') {
+        display: block;
+        margin: auto;
+        padding: 31.5rem 0;
+        width: 66.1rem;
+    }
 }
 
 .detail__media {
     height: 78.2rem;
     position: relative;
     width: 55.4rem;
+
+    @include media('<phone') {
+        height: 93.4rem;
+        margin: 0 auto 7.8rem;
+        width: 100%;
+    }
 }
 
 .detail__media__image {
@@ -25,6 +42,10 @@
 
 .detail__information {
     padding-left: 8.2rem;
+
+    @include media('<phone') {
+        padding-left: 0;
+    }
 }
 
 .detail__information__collection {
@@ -42,6 +63,10 @@
 
 .detail__information__content {
     padding-left: 18rem;
+
+    @include media('<phone') {
+        padding-left: 0;
+    }
 }
 
 .detail__information__highlights {
@@ -51,7 +76,7 @@
 .detail__information__highlight {
     align-items: center;
     display: flex;
-    gap: 3.75rem;
+    gap: 6rem;
 
     &:not(:first-child) {
         margin-top: 4rem;
@@ -59,11 +84,14 @@
 }
 
 .detail__information__highlight__icon {
-    border: 1px solid currentColor;
     border-radius: 50px;
     height: 4rem;
-    // margin-right: 3.75rem;
     width: 4rem;
+
+    @include media('<phone') {
+            height: 9.2rem;
+            width: 9.2rem;
+    }
 }
 
 .detail__information__highlight__text {
@@ -87,6 +115,11 @@
 
     padding-right: 2.5rem;
     width: 10rem;
+
+    @include media('<phone') {
+        padding-right: 5rem;
+        width: 15rem;
+    }
 }
 
 .detail__information__item__description {
