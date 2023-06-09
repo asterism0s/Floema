@@ -22,10 +22,10 @@
         justify-content: flex-start;
     }
 
-    &:nth-child(9) {
-        justify-content: flex-end;
-        margin-right: 16rem;
-    }
+    // &:nth-child(9) {
+    //     justify-content: flex-end;
+    //     // margin-right: 16rem;
+    // }
 
     @include media('<phone') {
         &:nth-child(5) {
@@ -36,22 +36,35 @@
             justify-content: flex-start;
         }
     
-        &:nth-child(9) {
-            justify-content: flex-end;
-            margin-right: 16rem;
-        }
+        // &:nth-child(9) {
+        //     justify-content: flex-end;
+        //     // margin-right: 16rem;
+        // }
     
     }
 }
 
 .about__content__wrapper {
     display: flex;
+
     .about__content--right & {
         flex-direction: row-reverse;
     }
 
     @include media('<phone') {
         .about__content:nth-child(3) & {
+            flex-direction: column-reverse;
+        }
+
+        .about__content:nth-child(5) & {
+            flex-direction: column;
+        }
+
+        .about__content:nth-child(8) & {
+            flex-direction: column-reverse;
+        }
+
+        .about__content:nth-child(9) & {
             flex-direction: column-reverse;
         }
     }
@@ -61,9 +74,22 @@
     display: flex;
 
     @include media('<=phone') {
+        margin: auto;
         width: 60.9rem;
 
         .about__content:nth-child(3) & {
+            margin-top: 10rem;
+        }
+
+        .about__content:nth-child(5) & {
+            margin-bottom: 10rem;
+        }
+
+        .about__content:nth-child(8) & {
+            margin-top: 10rem;
+        }
+
+        .about__content:nth-child(9) & {
             margin-top: 10rem;
         }
     }
@@ -76,6 +102,7 @@
     width: 18rem;
 
     @include media('<=phone') {
+        font-size: 2.4rem;
         padding-right: 2.5rem;
         width: 15rem;
     }
@@ -122,10 +149,29 @@
     }
 
     @include media('<=phone') {
+
         .about__content:nth-child(3) & {
             height: 91.4rem;
             margin-left: 0;
             width: 60.9rem;
+        }
+
+        .about__content:nth-child(5) & {
+            height: 50rem;
+            margin-left: 0;
+            width: 100vw;
+        }
+
+        .about__content:nth-child(8) & {
+            height: 52rem;
+            margin-right: 0;
+            width: 100vw;
+        }
+
+        .about__content:nth-child(9) & {
+            height: 85.8rem;
+            margin-left: 0;
+            width: 69.8rem;
         }
     }
 }
