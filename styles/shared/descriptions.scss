@@ -10,6 +10,10 @@
     
     &-14 {
         font-size: 1.4rem;
+
+        @include media('<phone') {
+            font-size: 3rem;
+        }
     }
 
     &-16 {
