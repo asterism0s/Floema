@@ -1,14 +1,12 @@
 import GSAP from 'gsap';
-
 import each from 'lodash/each';
-
 export default class Page {
     constructor({ 
         element,
         elements,
         id 
     }) {
-        this.selectors = element;
+        this.selector = element; // tem um typo nessa linha
         this.selectorChildren = {
             ...elements,
         }
@@ -19,6 +17,7 @@ export default class Page {
     create() {
         this.element = document.querySelector(this.selector);
         this.elements = {}
+
         each(this.selectorChildren, (entry, key) => {
             if (entry instanceof window.HTMLElement || entry instanceof window.NodeList || Array.isArray(entry)) {
                 this.elements[key] = entry;
@@ -35,14 +34,15 @@ export default class Page {
     };
 
 //able to have full aimation in the entire app
-    show() {
-        GSAP.from(this.elements, {
-            autoAlpha: 0
+    show () {
+        GSAP.from(this.element, {
+            autoAlpha: 0,
+            delay: 5
         })
     };
 
-    hide() {
-        GSAP.to(this.elements, {
+    hide () {
+        GSAP.to(this.element, {
             autoAlpha: 0
         })
     };
