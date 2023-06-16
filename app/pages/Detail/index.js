@@ -1,7 +1,7 @@
 import Page from "classes/Pages";
 
 export default class Detail extends Page {
-    constructor () {
+    constructor() {
         super({
             id: 'detail',
             element:'.detail',

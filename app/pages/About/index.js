@@ -1,7 +1,7 @@
 import Page from "classes/Pages";
 
 export default class About extends Page {
-    constructor () {
+    constructor() {
         super({
             id: 'about',
             element:'.about',
