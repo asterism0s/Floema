@@ -25,7 +25,7 @@ class App {
         
         this.page = this.pages[this.template]
         this.page.create() //select all the things that are in the page
-        console.log(this.page);
+        this.page.show()//to animate things in 
     }
 };
 

@@ -1,3 +1,5 @@
+import GSAP from 'gsap';
+
 import each from 'lodash/each';
 
 export default class Page {
@@ -32,4 +34,16 @@ export default class Page {
         });
     };
 
+//able to have full aimation in the entire app
+    show() {
+        GSAP.from(this.elements, {
+            autoAlpha: 0
+        })
+    };
+
+    hide() {
+        GSAP.to(this.elements, {
+            autoAlpha: 0
+        })
+    };
 }
