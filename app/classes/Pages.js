@@ -37,7 +37,6 @@ export default class Page {
     show () {
         GSAP.from(this.element, {
             autoAlpha: 0,
-            delay: 5
         })
     };
 
