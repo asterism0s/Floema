@@ -1,5 +1,6 @@
 import GSAP from 'gsap';
 import each from 'lodash/each';
+
 export default class Page {
     constructor({ 
         element,
@@ -33,16 +34,22 @@ export default class Page {
         });
     };
 
-//able to have full aimation in the entire app
-    show () {
-        GSAP.from(this.element, {
+//able to have full animation in the entire app
+    show() {
+        return new Promise(resolve => {
+            GSAP.from(this.element, {
             autoAlpha: 0,
+            onComplete: resolve,
+            })
         })
     };
 
-    hide () {
-        GSAP.to(this.element, {
-            autoAlpha: 0
+    hide() {
+        return new Promise(resolve => {
+            GSAP.to(this.element, {
+            autoAlpha: 0,
+            onComplete: resolve,
+            })
         })
     };
 }
