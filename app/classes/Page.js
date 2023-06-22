@@ -37,9 +37,11 @@ export default class Page {
 //able to have full animation in the entire app
     show() {
         return new Promise(resolve => {
-            GSAP.from(this.element, {
-            autoAlpha: 0,
-            onComplete: resolve,
+            GSAP.fromTo(this.element, {
+                autoAlpha: 0,
+            }, {
+                autoAlpha: 1,
+                onComplete: resolve,
             })
         })
     };
