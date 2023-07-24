@@ -29,29 +29,60 @@ export default class Page {
                     this.elements[key] = null;
                 } else if (this.elements[key].length === 1) {
                     this.elements[key] = document.querySelector(entry)
-                }
-            }
+                };
+            };
         });
     };
 
 //able to have full animation in the entire app
     show() {
         return new Promise(resolve => {
-            GSAP.fromTo(this.element, {
+            this.animationIn = GSAP.timeline();
+            
+            this.animationIn.fromTo(this.element, {
                 autoAlpha: 0,
             }, {
-                autoAlpha: 1,
-                onComplete: resolve,
-            })
-        })
+                autoAlpha: 1
+            });
+
+            this.animationIn.call(_ => {
+                this.addEventListeners();
+
+                resolve();
+            });
+        });
     };
 
     hide() {
         return new Promise(resolve => {
-            GSAP.to(this.element, {
+            this.removeEventListeners();
+            
+            this.animationOut = GSAP.timeline();
+
+            this.animationOut.to(this.element, {
             autoAlpha: 0,
             onComplete: resolve,
-            })
-        })
+            });
+        });
+    };
+
+    onMouseWheel(event) {
+        console.log(event);
+
+        const  { deltaY } = event;
+
+        console.log(deltaY);
+    };
+
+    update () {
+        this.scroll
+    }
+
+    addEventListeners() {
+        window.addEventListener('mousewheel', this.onMouseWheel)
+    };
+
+    removeEventListeners() {
+        window.removeEventListener('mousewheel', this.onMouseWheel)
     };
 }

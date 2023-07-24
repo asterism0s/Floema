@@ -8,12 +8,14 @@ import Home from './pages/Home';
 
 
 class App {
-    constructor () {
+    constructor() {
         this.createPreloader();
         this.createContent();
         this.createPages();
 
         this.addLinkListerns();
+
+        this.update();
     };
 
     createPreloader() {
@@ -71,6 +73,15 @@ class App {
             console.log('error');
         };
     };
+
+    update() {
+
+        if (this.page && this.page.update) {
+            this.page.update();
+        };
+
+        this.frame = window.requestAnimationFrame(this.update.bind(this));
+    }
 
     addLinkListerns() {
         const links = document.querySelectorAll('a');

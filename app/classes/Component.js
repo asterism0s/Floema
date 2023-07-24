@@ -9,7 +9,7 @@ export default class Component extends EventEmitter {
     }) {
         super()
 
-        this.selector = element; // tem um typo nessa linha
+        this.selector = element; 
         this.selectorChildren = {
             ...elements,
         }
