@@ -15,6 +15,7 @@ class App {
 
         this.addLinkListerns();
 
+        this.addEventListeners();
         this.update();
     };
 
@@ -40,8 +41,13 @@ class App {
         this.page.create();
     };
 
+    /* EVENTS */
+
     onPreloaded() {
         this.preloader.destroy();
+        
+        this.onResize();
+        
         this.page.show();
     };
 
@@ -64,7 +70,11 @@ class App {
             this.content.innerHTML = divContent.innerHTML;
 
             this.page = this.pages[this.template];
+
             this.page.create();
+
+            this.onResize();
+
             this.page.show();
 
             this.addLinkListerns();
@@ -74,6 +84,14 @@ class App {
         };
     };
 
+    onResize() {
+        if (this.page && this.page.onResize) {
+            this.page.onResize();
+        };
+    };
+
+        /* LOOP */
+
     update() {
 
         if (this.page && this.page.update) {
@@ -81,7 +99,15 @@ class App {
         };
 
         this.frame = window.requestAnimationFrame(this.update.bind(this));
-    }
+    };
+
+
+    /* LISTENERS */
+
+
+    addEventListeners() {
+        window.addEventListener('resize', this.onResize.bind(this));
+    };
 
     addLinkListerns() {
         const links = document.querySelectorAll('a');
