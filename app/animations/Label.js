@@ -5,7 +5,7 @@ import each from 'lodash/each';
 
 import { calculate, split } from 'utils/text';
 
-export default class Title extends Animation {
+export default class Label extends Animation {
     constructor({ element, elements }) {
         super ({
             element,
@@ -17,6 +17,7 @@ export default class Title extends Animation {
 
 
         this.elementLinesSpans = this.element.querySelectorAll('span span');
+
     };
 
     animateIn() {

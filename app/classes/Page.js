@@ -5,8 +5,10 @@ import Prefix from 'prefix';
 import each from 'lodash/each';
 import map from 'lodash/map';
 
+import Label from 'animations/Label';
+import Paragraph from 'animations/Paragraph';
 import Title from 'animations/Title';
-
+import Highlight from 'animations/Highlight';
 
 export default class Page {
     constructor({ 
@@ -17,6 +19,10 @@ export default class Page {
         this.selector = element; // tem um typo nessa linha
         this.selectorChildren = {
             ...elements,
+
+            animationsHighlights: '[data-animation="highlight"]',
+            animationsLabels: '[data-animation="label"]',
+            animationsParagraphs: '[data-animation="paragraph"]',
             animationsTitles: '[data-animation="title"]',
         };
 
@@ -58,15 +64,44 @@ export default class Page {
     };
 
     createAnimations() {
+        this.animations = [];
 
-        console.log(this.elements.animationsTitles)
+
+        //Highlights--------------------------------
+        this.animationsHighlights = map(this.elements.animationsHighlights, element => {
+            return new Highlight ({ 
+                element
+            });
+        });
+
+        this.animations.push(...this.animationsHighlights);
+
+        //Titles--------------------------------
         this.animationsTitles = map(this.elements.animationsTitles, element => {
             return new Title ({ 
                 element
             });
-        })
+        });
 
-        console.log(this.animationsTitles)
+        this.animations.push(...this.animationsTitles);
+
+        //Paragraphs--------------------------------
+        this.animationsParagraphs = map(this.elements.animationsParagraphs, element => {
+            return new Paragraph ({ 
+                element
+            });
+        });
+
+        this.animations.push(...this.animationsParagraphs);
+
+        //Labels--------------------------------
+        this.animationsLabels = map(this.elements.animationsLabels, element => {
+            return new Label ({ 
+                element
+            });
+        });
+
+        this.animations.push(...this.animationsLabels);
     };
 
 //able to have full animation in the entire app
@@ -113,7 +148,7 @@ export default class Page {
             this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight;
         }
 
-        each(this.animationsTitles, animation => animation.onResize());
+        each(this.animations, animation => animation.onResize());
     }
 
     update() {

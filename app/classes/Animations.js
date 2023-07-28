@@ -28,11 +28,9 @@ export default class Animation extends Component {
         this.observer.observe(this.element)
     };
 
-    animateIn() {
-        
-    };
+    animateIn() {};
 
-    animateOut() {
+    animateOut() {};
 
-    };
+    onResize() {};
 };
