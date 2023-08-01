@@ -10,6 +10,8 @@ import Paragraph from 'animations/Paragraph';
 import Title from 'animations/Title';
 import Highlight from 'animations/Highlight';
 
+import { ColorsManager } from 'classes/Colors';
+
 export default class Page {
     constructor({ 
         element,
@@ -31,8 +33,6 @@ export default class Page {
         this.transformPrefix = Prefix('transform');
 
         this.onMouseWheelEvent = this.onMouseWheel.bind(this);
-
-        console.log(this.transformPrefix)
     };
 
     create() {
@@ -107,6 +107,10 @@ export default class Page {
 //able to have full animation in the entire app
     show() {
         return new Promise(resolve => {
+            ColorsManager.change({
+                backgroundColor: this.element.getAttribute('data-background'),
+                color: this.element.getAttribute('data-color'),
+            })
             this.animationIn = GSAP.timeline();
             
             this.animationIn.fromTo(this.element, {

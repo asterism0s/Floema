@@ -7,6 +7,9 @@
 html {
     @extend %cover;
 
+    background: $color-contessa;
+    color: $color-spanish-white;
+
     font-size: calc(100vw / 1920 * 10);
     line-height: 1;
     overflow: hidden;
