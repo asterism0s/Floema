@@ -90,13 +90,17 @@
 
 .collections__mobile {
     bottom: 5rem;
-    display: flex;
+    display: none;
     position: absolute ;
 }
 
 .collections__mobile__item {
     padding-left: 5rem;
     width: 100vw;
+
+    @include media('<phone') {
+        display: flex;
+    }
 }
 
 .collections__mobile__item__label {

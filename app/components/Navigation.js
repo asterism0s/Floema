@@ -1,8 +1,8 @@
 import GSAP from 'gsap';
 
-import Component from "classes/Component";
+import Component from 'classes/Component';
 
-import { COLOR_BRIGHT_GRAY, COLOR_SPANISH_WHITE } from "utils/colors";
+import { COLOR_BRIGHT_GRAY, COLOR_SPANISH_WHITE } from 'utils/colors';
 
 export default class Navigation extends Component {
     constructor({ template }) {
@@ -26,10 +26,13 @@ export default class Navigation extends Component {
 
             GSAP.to(this.elements.items[0], {
                 autoAlpha: 1,
+                delay: 0.75,
+                duration: 0.75,
             });
 
             GSAP.to(this.elements.items[1], {
                 autoAlpha: 0,
+                duration: 0.75,
             });
 
         } else {
@@ -40,10 +43,13 @@ export default class Navigation extends Component {
 
             GSAP.to(this.elements.items[0], {
                 autoAlpha: 0,
+                duration: 0.75,
             });
 
             GSAP.to(this.elements.items[1], {
-                autoAlpha: 1 ,
+                autoAlpha: 1,
+                delay: 0.75,
+                duration: 0.75, 
             });
         };
     };
