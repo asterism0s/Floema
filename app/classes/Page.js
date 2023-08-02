@@ -21,7 +21,7 @@ export default class Page {
         elements,
         id,
     }) {
-        this.selector = element; // tem um typo nessa linha
+        this.selector = element;
         this.selectorChildren = {
             ...elements,
 
@@ -117,7 +117,8 @@ export default class Page {
         })
     };
 
-//able to have full animation in the entire app
+    //Animations --------------------------------
+
     show() {
         return new Promise(resolve => {
             ColorsManager.change({
@@ -142,7 +143,7 @@ export default class Page {
 
     hide() {
         return new Promise(resolve => {
-            this.removeEventListeners();
+            this.destroy();
             
             this.animationOut = GSAP.timeline();
 
@@ -153,6 +154,7 @@ export default class Page {
         });
     };
 
+    //Events --------------------------------
     onMouseWheel(event) {
         const  { pixelY } = NormalizeWheel(event);
 
@@ -168,6 +170,8 @@ export default class Page {
         each(this.animations, animation => animation.onResize());
     }
 
+
+    //Loops --------------------------------
     update() {
         this.scroll.target = GSAP.utils.clamp(0, this.scroll.limit, this.scroll.target);
 
@@ -182,6 +186,7 @@ export default class Page {
         }
     }
 
+    //Listeners --------------------------------
     addEventListeners() {
         window.addEventListener('mousewheel', this.onMouseWheelEvent)
     };
@@ -189,4 +194,9 @@ export default class Page {
     removeEventListeners() {
         window.removeEventListener('mousewheel', this.onMouseWheelEvent)
     };
+
+    //Destroy --------------------------------
+    destroy() {
+        this.removeEventListeners();
+    }
 }

@@ -1,3 +1,4 @@
+import Button from "classes/Button";
 import Page from "classes/Page";
 
 export default class Home extends Page {
@@ -15,6 +16,14 @@ export default class Home extends Page {
     create() {
         super.create(); //this method allows you to not overwrite existing create function in the Pages.js file
 
-        this.elements.link.addEventListener('click', _ => console.log('Oh, you clicked me'))
+        this.link = new Button({
+            element: this.elements.link,
+        });
+    }
+
+    destroy() {
+        super.destroy();
+
+        this.link.removeEventListener();
     }
 }
