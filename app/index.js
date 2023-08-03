@@ -51,7 +51,7 @@ class App {
         this.page.create();
     };
 
-    /* EVENTS */
+    //EVENTS ----------------------------------------------------------------
 
     onPreloaded() {
         this.preloader.destroy();
@@ -103,7 +103,7 @@ class App {
         };
     };
 
-        /* LOOP */
+    // LOOP ----------------------------------------------------------------
 
     update() {
 
@@ -115,8 +115,7 @@ class App {
     };
 
 
-    /* LISTENERS */
-
+    // LISTENERS ----------------------------------------------------------------
 
     addEventListeners() {
         window.addEventListener('resize', this.onResize.bind(this));

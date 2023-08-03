@@ -24,6 +24,6 @@ export default class Home extends Page {
     destroy() {
         super.destroy();
 
-        this.link.removeEventListener();
+        this.link.removeEventListeners();
     }
 }
