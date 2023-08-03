@@ -61,7 +61,16 @@ class App {
         this.page.show();
     };
 
-    async onChange(url) {
+    //TESTE 0308
+    onPopState() {
+        this.onChange({
+            url: window.location.pathname,
+            push: false,
+        });
+    }
+
+
+    async onChange({ url, push = true }) { 
 
         await this.page.hide();
 
@@ -70,6 +79,10 @@ class App {
         if(request.status === 200) {
             const html = await request.text();
             const div = document.createElement('div');
+
+            if (push) {
+                window.history.pushState({}, '', url);
+            }
 
             div. innerHTML = html;
 
@@ -118,6 +131,8 @@ class App {
     // LISTENERS ----------------------------------------------------------------
 
     addEventListeners() {
+        window.addEventListener('popstate', this.onPopState.bind(this)); 
+
         window.addEventListener('resize', this.onResize.bind(this));
     };
 
@@ -126,10 +141,11 @@ class App {
 
         each(links, link => {
             link.onclick = event => {
-                const { href } = link;
                 event.preventDefault();
 
-                this.onChange(href);
+                const { href } = link;
+
+                this.onChange({ url: href }); 
             };
         });
     };
